@@ -38,7 +38,8 @@ export const CreateVendor = async (req: Request, res: Response, next: NextFuncti
         salt: salt,
         rating: 0,
         serviceAvailable: false,
-        coverImage: []
+        coverImage: [],
+        foods: []
     });
 
     return res.json(createVendor);

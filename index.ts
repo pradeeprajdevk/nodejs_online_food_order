@@ -4,10 +4,12 @@ import mongoose from "mongoose";
 
 import { AdminRoute, VendorRoute } from "./routes/index";
 import { MONGO_URI } from "./config";
+import path from "path";
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use("/images", express.static(path.join('images')));
 
 // Routes
 app.get("/", (req, res) => {
