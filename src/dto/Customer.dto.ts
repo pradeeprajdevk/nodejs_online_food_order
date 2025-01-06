@@ -37,3 +37,8 @@ export class EditCustomerInputs {
     @Length(6,16)
     address: string;
 }
+
+export class OrderInputs {
+    _id: string;
+    unit: number;
+}

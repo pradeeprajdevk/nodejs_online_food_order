@@ -1,6 +1,5 @@
 import express, { Request, Response, NextFunction } from "express";
-import { todo } from "node:test";
-import { CustomerLogin, CustomerSignup, CustomerVerify, EditCustomerProfile, GetCustomerProfile, RequestOTP } from "../controllers";
+import { CreateOrder, CustomerLogin, CustomerSignup, CustomerVerify, EditCustomerProfile, GetCustomerProfile, GetOrderById, GetOrders, RequestOTP } from "../controllers";
 import { Authenticate } from "../middlewares";
 
 const router = express.Router();
@@ -26,9 +25,14 @@ router.get("/profile", GetCustomerProfile);
 // Update Profile
 router.patch("/profile", EditCustomerProfile);
 
-//TODO: After completing the above routes
 // Cart
+
 // Order
+router.post('/create-order', CreateOrder);
+router.get('/orders', GetOrders);
+router.get('/order/:id', GetOrderById);
+
 // Payment
+
 
 export { router as CustomerRoute};
