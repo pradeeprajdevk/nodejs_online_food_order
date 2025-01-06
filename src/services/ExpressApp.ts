@@ -1,12 +1,11 @@
 import express, { Application } from "express";
-import bodyParser from "body-parser";
 import { AdminRoute, CustomerRoute, ShoppingRoute, VendorRoute } from "../routes/index";
 import path from "path";
 
 export default async (app: Application) => {
 
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: true}));
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true}));
     app.use("/images", express.static(path.join('images')));
 
     // Routes
