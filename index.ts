@@ -1,30 +1,19 @@
 import express from "express";
-import bodyParser from "body-parser";
-import mongoose from "mongoose";
+import App from "./services/ExpressApp";
+import dbConnection from './services/Database';
+import { PORT } from "./config";
 
-import { AdminRoute, VendorRoute } from "./routes/index";
-import { MONGO_URI } from "./config";
-import path from "path";
+const StartServer = async () => {
+    const app = express();
 
-const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
-app.use("/images", express.static(path.join('images')));
+    await dbConnection();
 
-// Routes
-app.get("/", (req, res) => {
-    res.json({ message: "Hello from food order Backend!" });
-});
-app.use("/admin", AdminRoute);
-app.use("/vendor", VendorRoute);
+    await App(app);
 
-mongoose.connect(MONGO_URI)
-.then(result => {
-    console.log(`Mongo Connected Successfully`);
-}).catch(err => console.log(`Mongo Connection error ${err}`));
+    // App Listen
+    app.listen(PORT, () => {
+        console.log(`App is listening to the port ${PORT}`);
+    });
+}
 
-// App Listen
-app.listen(8000, () => {
-    console.clear();
-    console.log("App is listening to the port 8000");
-});
+StartServer();
