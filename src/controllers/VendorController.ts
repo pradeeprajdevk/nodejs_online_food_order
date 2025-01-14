@@ -1,11 +1,10 @@
 import { Request, Response, NextFunction } from "express";
-import { EditVendorInput, VendorLoginInputs } from "../dto";
-import { Food, Vendor } from "../models";
+import { CreateOfferInput, EditVendorInput, VendorLoginInputs } from "../dto";
+import { Food, Offer, Vendor, Order } from "../models";
 import { findVendor } from "./AdminController";
 import { GenerateSignature, ValidatePassword } from "../utility";
 import { CreateFoodInputs } from "../dto/Food.dto";
-import { Order } from "../models/Order";
-
+import { off } from "process";
 
 export const VendorLogin = async(req: Request, res: Response, next: NextFunction): Promise<any> => {
     const { email, password } = <VendorLoginInputs>req.body;
@@ -25,6 +24,7 @@ export const VendorLogin = async(req: Request, res: Response, next: NextFunction
                 foodType: existingVendor.foodType
             })
 
+            console.log(signature);
             return res.json(signature);
         } else {
             return res.json({ message: "Password is not valid" });
@@ -215,4 +215,115 @@ export const ProcessOrder = async (req: Request, res: Response, next: NextFuncti
     }
 
     return res.status(400).json({ "message": "Unable to process order" });
+}
+
+export const GetOffers = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const user = req.user;
+
+    if (user) {
+        const offers = await Offer.find().populate('vendors');
+
+        if (offers) {
+            let currentOffers = Array();
+
+            offers.map(item => {
+                if(item.vendors) {
+                    item.vendors.map(vendor => {
+                        if(vendor._id.toString() === user._id) {
+                            currentOffers.push(item);
+                        }
+                    })
+                }
+
+                if (item.offerType === 'GENERIC') {
+                    currentOffers.push(item);
+                }
+            });
+
+            return res.status(200).json(currentOffers);
+        }
+    }
+
+    return res.status(400).json({ message: "Offers are not available." });
+}
+
+export const AddOffer = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const user = req.user;
+
+    if (user) {
+        const { title, description, offerType, offerAmount, pincode,
+            promoCode, promoType, startValidity, endValidity, bank, bins,
+            minValue, isActive
+        } = <CreateOfferInput>req.body;
+
+        const vendor  = await findVendor(user._id);
+
+        if (vendor) {
+            const offer = await Offer.create({
+                title,
+                description,
+                offerType,
+                offerAmount,
+                pincode,
+                promoCode,
+                promoType,
+                startValidity,
+                endValidity,
+                bank,
+                bins,
+                isActive,
+                minValue,
+                vendors:[vendor]
+            });
+
+            console.log("Offer", offer);
+
+            return res.status(200).json(offer);
+        }
+    }
+
+    return res.status(400).json({ message: "Unable to process Offer!" });
+}
+
+export const EditOffer = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+    const user = req.user;
+
+    const offerId = req.params.id;
+
+    if (user) {
+        const { title, description, offerType, offerAmount, pincode,
+            promoCode, promoType, startValidity, endValidity, bank, bins,
+            minValue, isActive
+        } = <CreateOfferInput>req.body;
+
+        const currentOffer = await Offer.findById(offerId);
+
+        if (currentOffer) {
+            const vendor  = await findVendor(user._id);
+
+            if (vendor) {
+                
+                currentOffer.title = title;
+                currentOffer.description = description;
+                currentOffer.offerType = offerType;
+                currentOffer.offerAmount = offerAmount;
+                currentOffer.pincode = pincode;
+                currentOffer.promoCode = promoCode;
+                currentOffer.promoType = promoType;
+                currentOffer.startValidity = startValidity;
+                currentOffer.endValidity = endValidity;
+                currentOffer.bank = bank;
+                currentOffer.bins = bins;
+                currentOffer.isActive = isActive;
+                currentOffer.minValue = minValue;
+
+                const result = await currentOffer.save();
+
+                return res.status(200).json(result);
+            }
+        }
+    }
+
+    return res.status(400).json({ message: "Unable to process Offer!" });
+
 }
