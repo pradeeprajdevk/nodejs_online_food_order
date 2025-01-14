@@ -3,9 +3,8 @@ import express, { Request, Response, NextFunction } from "express";
 import { validate } from "class-validator";
 import { plainToClass } from "class-transformer";
 import { CreateCustomerInputs, EditCustomerInputs, OrderInputs, UserLoginInputs } from "../dto/Customer.dto";
-import { Customer, Food } from "../models";
+import { Customer, Food, Offer, Order } from "../models";
 import { GenerateOTP, GeneratePassword, GenerateSalt, GenerateSignature, onRequestOTP, ValidatePassword } from "../utility";
-import { Order } from "../models/Order";
 
 export const findCustomer = async(id: string | undefined, email?: string) => {
     if (email) {
@@ -399,4 +398,33 @@ export const DeleteCart = async (req: Request, res: Response, next: NextFunction
     }
 
     return res.status(400).json({ message: 'Cart is already empty'});
+}
+
+export const VerifyOffer = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+
+    const offerId = req.params.id;
+    const customer = req.user;
+
+    if (customer) {
+
+        const appliedOffer = await Offer.findById(offerId);
+
+        if (appliedOffer) {
+
+            if (appliedOffer.promoType === "USER") {
+                // only can apply once per user
+            } else {
+                if (appliedOffer.isActive) {
+                    return res.status(200).json({
+                        message: "Offer is Valid",
+                        offer: appliedOffer
+                    })
+                }
+            }
+        }
+    }
+
+    return res.status(400).json({
+        message: "Offer is not valid"
+    })
 }
