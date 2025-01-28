@@ -5,14 +5,15 @@ export interface OrderDoc extends Document {
     vendorId: string,
     items: [any], // [{ food, unit: 1 }]
     totalAmount: number, // 456
+    paidAmount: number,
     orderDate: Date,
-    paidThrough: string, // COD, Credit Card, Wallet
-    paymentResponse: string, // { status: true, response: some bank response } Long response object for charge back scenario
+    // paidThrough: string, // COD, Credit Card, Wallet
+    // paymentResponse: string, // { status: true, response: some bank response } Long response object for charge back scenario
     orderStatus: string, // To determine the current status waiting // failed // ACCEPT // REJECT // UNDER-PROCESS // READY
     remarks: string, // remarks of order
     deliveryId: string, // to track the order while delevering the order
-    appliedOffers: boolean, // to determine the offers on order
-    offerId: string, // if an offer then keep track of the orderId
+    // appliedOffers: boolean, // to determine the offers on order
+    // offerId: string, // if an offer then keep track of the orderId
     readyTime: number, // max 60 minutes
 }
 
@@ -26,14 +27,15 @@ const OrderSchema = new Schema({
         }
     ],
     totalAmount: { type: Number, required: true },
+    paidAmount: { type: Number, required: true },
     orderDate: { type: Date},
-    paidThrough: { type: String }, // COD, Credit Card, Wallet
-    paymentResponse: { type: String }, // { status: true, response: some bank response }
+    // paidThrough: { type: String }, // COD, Credit Card, Wallet
+    // paymentResponse: { type: String }, // { status: true, response: some bank response }
     orderStatus: { type: String },
     remarks: { type: String },
     deliveryId: { type: String },
-    appliedOffers: { type: Boolean },
-    offerId: { type: String },
+    // appliedOffers: { type: Boolean },
+    // offerId: { type: String },
     readyTime: { type: Number }
 }, {
     toJSON: {
