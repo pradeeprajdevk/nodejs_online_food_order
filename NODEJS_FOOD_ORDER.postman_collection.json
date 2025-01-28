@@ -1,0 +1,1437 @@
+{
+	"info": {
+		"_postman_id": "228de688-c840-4eac-9d5a-c5730886b54a",
+		"name": "NODEJS_FOOD_ORDER",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36321798"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Admin - Create Vendor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"First Restaurant\",\r\n    \"foodType\": [\"non-veg\", \"veg\"],\r\n    \"pincode\": \"632001\",\r\n    \"address\": \"Vellore\",\r\n    \"phone\": \"9898989898\",\r\n    \"ownerName\": \"Mr. ABC\",\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"test123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/admin/vendor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"vendor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Get Vendors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/admin/vendors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"vendors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Get VendorById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/admin/vendor/6777b2cc6280cb7c70652e4e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"vendor",
+								"6777b2cc6280cb7c70652e4e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Get Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/admin/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Get Transaction By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/admin/transaction/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"transaction",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6786b421ac50ee805f435c55"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin - Get Delivery Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/admin/delivery/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"delivery",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"67988c2ce86f8eaa0b8ff29f\",\r\n    \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/admin/delivery/verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"admin",
+								"delivery",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vendor",
+			"item": [
+				{
+					"name": "Vendor - Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"test123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/vendor/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/vendor/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Update Profile",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"First Restaurant - Updated\",\r\n    \"address\": \"Vellore\",\r\n    \"phone\": \"9898989898\",\r\n    \"foodType\": [\r\n        \"non-veg\",\r\n        \"veg\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/vendor/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Update Service",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lat\": 19.055,\r\n    \"lng\": 72.833\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/vendor/service",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"service"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Add Food",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Burger Second Small",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Burger Second Small",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "breakfast",
+									"type": "text"
+								},
+								{
+									"key": "foodType",
+									"value": "veg",
+									"type": "text"
+								},
+								{
+									"key": "readyTime",
+									"value": "15",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "70",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": [
+										"/C:/Users/AL1430/Downloads/image1.jpg",
+										"/C:/Users/AL1430/Downloads/image2.jpg"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/vendor/food",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"food"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Get Foods",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:8000/vendor/foods",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"foods"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Update CoverImage",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/AL1430/Downloads/thumjpg.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/vendor/coverimage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"coverimage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Get Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/vendor/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Get Order By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/vendor/order/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"order",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "677d08767c6a4ddd8f85d4c1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Process Order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"ACCEPT\",\r\n    \"remarks\": \"\",\r\n    \"time\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/vendor/order/:id/process",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"order",
+								":id",
+								"process"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "677d08767c6a4ddd8f85d4c1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Add Offer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"100 Off on Week Days\",\r\n    \"description\": \"Get 100 OFFof weekdays for every order. * Applicable on weekdays only and Minimum order amount must be INR 250 or above\",\r\n    \"offerType\": \"VENDOR\",\r\n    \"offerAmount\": 100,\r\n    \"pincode\": 632001,\r\n    \"promoCode\": \"OFFER100\",\r\n    \"promoType\": \"ALL\",\r\n    \"startValidity\": \"\",\r\n    \"endValidity\": \"\",\r\n    \"bank\": \"\",\r\n    \"bins\": \"\",\r\n    \"isActive\": true,\r\n    \"minValue\": 250\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/vendor/offer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"offer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Edit Offer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"200 Off on Friday\",\r\n    \"description\": \"Get 200 OFF of Friday for every order. * Applicable on weekdays only and Minimum order amount must be INR 500 or above\",\r\n    \"offerType\": \"VENDOR\",\r\n    \"offerAmount\": 200,\r\n    \"pincode\": 632001,\r\n    \"promoCode\": \"OFFER200\",\r\n    \"promoType\": \"ALL\",\r\n    \"startValidity\": \"\",\r\n    \"endValidity\": \"\",\r\n    \"bank\": \"\",\r\n    \"bins\": \"\",\r\n    \"isActive\": true,\r\n    \"minValue\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/vendor/offer/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"offer",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "678683a7c3942da77513d09d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor - Get Offers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/vendor/offers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"vendor",
+								"offers"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzc3Zjc3YjMxMTg2OTM2MjZlYzEyZGYiLCJuYW1lIjoiRmlyc3QgUmVzdGF1cmFudCIsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsImZvb2RUeXBlIjpbIm5vbi12ZWciLCJ2ZWciXSwiaWF0IjoxNzM4MDQ0MTQyLCJleHAiOjE3MzgxMzA1NDJ9.fyBuwjWTwdBuVd17NeiMOoxApax1G9o9fLlTlsifhNE",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Shopping",
+			"item": [
+				{
+					"name": "Foods - Availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/:pincode",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								":pincode"
+							],
+							"variable": [
+								{
+									"key": "pincode",
+									"value": "632001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Foods - Top Restaurants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/top-restaurants/:pincode",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"top-restaurants",
+								":pincode"
+							],
+							"variable": [
+								{
+									"key": "pincode",
+									"value": "632001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Foods - In 30 min",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/foods-in-30-min/:pincode",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"foods-in-30-min",
+								":pincode"
+							],
+							"variable": [
+								{
+									"key": "pincode",
+									"value": "632001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Foods - Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/search/:pincode",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"search",
+								":pincode"
+							],
+							"variable": [
+								{
+									"key": "pincode",
+									"value": "632001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Foods - Restaurant By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/restaurant/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"restaurant",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6777f77b3118693626ec12df"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Foods - Offers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/offers/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"offers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "632001"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "User - Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"test123\",\r\n    \"phone\": \"8073271915\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/customer/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Verify",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdiZTYzNDdhMDgyMjMyZWU2MTQ3NmMiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ2ZXJpZmllZCI6ZmFsc2UsImlhdCI6MTczNjE3MzEwOSwiZXhwIjoxNzM2MjU5NTA5fQ.v3JOtI2o6_NtMzyZcppLf9HKA1vE6ibJEutGZ6c1T14",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"otp\": \"661766\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/customer/verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - OTP Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdiZTYzNDdhMDgyMjMyZWU2MTQ3NmMiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzM2MTgxNzIzLCJleHAiOjE3MzYyNjgxMjN9.VuQCfjKWkCWv7NGjxHfw9pk7P5DMrsoij0ZNsRCIQdQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/customer/otp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"test123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/customer/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdiZTYzNDdhMDgyMjMyZWU2MTQ3NmMiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzM2MTgxOTU2LCJleHAiOjE3MzYyNjgzNTZ9.z7CDPLhcfGEWHm1YtYHfqjdk3Q1IZJUdyLoEm-0CWBA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/customer/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Update Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdiZTYzNDdhMDgyMjMyZWU2MTQ3NmMiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzM2MTgxOTU2LCJleHAiOjE3MzYyNjgzNTZ9.z7CDPLhcfGEWHm1YtYHfqjdk3Q1IZJUdyLoEm-0CWBA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Pradeep\",\r\n    \"lastName\": \"Raj\",\r\n    \"address\": \"Vellore-TN,India\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/customer/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"txnId\": \"6798b160d9f81fb36f14f067\",\r\n    \"amount\": \"470\",\r\n    \"items\": [{\r\n        \"_id\": \"6777f891381e5804ac5e30ae\",\r\n        \"unit\": 4    \r\n    }, {\r\n        \"_id\": \"6777f8d8381e5804ac5e30b3\",\r\n        \"unit\": 1\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/customer/create-order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"create-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Get Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdiZTYzNDdhMDgyMjMyZWU2MTQ3NmMiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzM2MTgxOTU2LCJleHAiOjE3MzYyNjgzNTZ9.z7CDPLhcfGEWHm1YtYHfqjdk3Q1IZJUdyLoEm-0CWBA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/customer/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Get OrderById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/customer/order/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"order",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6798b1a10bcf3cbdbcb684a9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Add To Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdiZTYzNDdhMDgyMjMyZWU2MTQ3NmMiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzM2MjQxNDAzLCJleHAiOjE3MzYzMjc4MDN9.sY08dk-ha4q7NjIiivH6r_jaT8qhw3wDGudiyAomcGI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"6777f8d8381e5804ac5e30b3\",\r\n    \"unit\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/customer/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Get Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdiZTYzNDdhMDgyMjMyZWU2MTQ3NmMiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzM2MjQxNDAzLCJleHAiOjE3MzYzMjc4MDN9.sY08dk-ha4q7NjIiivH6r_jaT8qhw3wDGudiyAomcGI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/customer/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User - Delete Cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdiZTYzNDdhMDgyMjMyZWU2MTQ3NmMiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzM2MjQxNDAzLCJleHAiOjE3MzYzMjc4MDN9.sY08dk-ha4q7NjIiivH6r_jaT8qhw3wDGudiyAomcGI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/customer/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User- Verify Offer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/customer/offer/verify/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"offer",
+								"verify",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "678683a7c3942da77513d09d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User- Create Payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"offerId\": \"678683a7c3942da77513d09d\",\r\n    \"amount\": 670,\r\n    \"paymentMode\": \"COD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/customer/create-payment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"customer",
+								"create-payment"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdiZTYzNDdhMDgyMjMyZWU2MTQ3NmMiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ2ZXJpZmllZCI6dHJ1ZSwiaWF0IjoxNzM4MDQ2MzUyLCJleHAiOjE3MzgxMzI3NTJ9.v5Z2tSB9KxnQUZLsfLokJiJ6qPpfmcIQCfHGuk6g3ck",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Delivery",
+			"item": [
+				{
+					"name": "Delivery - Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"delivery1@test.com\",\r\n    \"password\": \"123456\",\r\n    \"phone\": \"1234567\",\r\n    \"firstName\": \"Delivery1\",\r\n    \"lastName\": \"Test\",\r\n    \"address\": \"Vellore Somewhere\",\r\n    \"pincode\": \"632001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/delivery/signup/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"delivery",
+								"signup",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delivery - Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"delivery1@test.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/delivery/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"delivery",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delivery - Change Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lat\": 19.055,\r\n    \"lng\": 72.833\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/delivery/change-status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"delivery",
+								"change-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delivery - Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/delivery/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"delivery",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delivery - Edit Profile",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Delivery1\",\r\n    \"lastName\": \"Test\",\r\n    \"address\": \"Vellore\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/delivery/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"delivery",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Nzk4OGMyY2U4NmY4ZWFhMGI4ZmYyOWYiLCJlbWFpbCI6ImRlbGl2ZXJ5MUB0ZXN0LmNvbSIsInZlcmlmaWVkIjpmYWxzZSwiaWF0IjoxNzM4MDUwNjU2LCJleHAiOjE3MzgxMzcwNTZ9.bAbq6OTTdRUTkdgz4lTrGdbjkjarZprAfOj2w9JBwYs",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
